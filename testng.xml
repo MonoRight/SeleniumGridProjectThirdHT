@@ -1,0 +1,49 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="MainSuite" parallel="tests">
+    <test name="AddToCartTestsChrome" parallel="methods" thread-count="1">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="AddToCartTests">
+                <methods>
+                    <include name="checkTotalPriceOfCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="AddToCartTestsFirefox" parallel="methods" thread-count="1">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="AddToCartTests">
+                <methods>
+                    <include name="checkTotalPriceOfCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="AddCommentTestsFirefox" parallel="methods" thread-count="2">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="AddCommentTests">
+                <methods>
+                    <include name="tryToAddCommentWithInvalidEmail"/>
+                    <include name="tryToAddCommentWithValidEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="AddCommentTestsChrome" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="AddCommentTests">
+                <methods>
+                    <include name="tryToAddCommentWithInvalidEmail"/>
+                    <include name="tryToAddCommentWithValidEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
